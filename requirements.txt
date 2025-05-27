@@ -1,11 +1,3 @@
-https://github.com/pypa/distutils/archive/refs/heads/main.zip
-
-streamlit==1.24.1
+streamlit
 moviepy==1.0.3
-imageio==2.31.1
-imageio-ffmpeg==0.4.8
-numpy==1.23.5
-tqdm==4.66.1
-decorator==4.4.2
-setuptools
-wheel
+imageio-ffmpeg
