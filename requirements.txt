@@ -1,4 +1,4 @@
-shttps://github.com/pypa/distutils/archive/refs/heads/main.zip
+https://github.com/pypa/distutils/archive/refs/heads/main.zip
 
 streamlit==1.24.1
 moviepy==1.0.3
