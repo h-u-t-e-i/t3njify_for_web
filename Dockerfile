@@ -1,22 +1,19 @@
-# ベースイメージ（Python 3.10系）
+# ベースイメージは安定版の Python 3.10 を使用
 FROM python:3.10-slim
-
-# 必要パッケージのインストール（ffmpeg, unzip）
-RUN apt-get update && \
-    apt-get install -y ffmpeg unzip && \
-    apt-get clean
 
 # 作業ディレクトリを作成
 WORKDIR /app
 
-# アプリケーションファイルをコピー
-COPY . /app
+# distutils を手動インストール（必要な場合がある）
+RUN apt-get update && apt-get install -y python3-distutils ffmpeg
 
-# 依存関係をインストール
+# requirements.txt をコピーしてインストール
+COPY requirements.txt .
+
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
-# ポート指定（Streamlitのデフォルト）
-EXPOSE 8501
+# アプリコードとデータをコピー
+COPY . .
 
-# Streamlitを起動
-CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# Streamlit をポート指定で起動
+CMD ["streamlit", "run", "app.py", "--server.port=8080", "--server.address=0.0.0.0"]
